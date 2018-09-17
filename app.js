@@ -13,6 +13,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
   if (message.author.bot) return;
+
   var words = message.content.split(" ");
 
   playerChampRandomizer.handleMessage(message, words);

@@ -232,15 +232,43 @@ exports.handleMessage = function handleMessage(message, words) {
 
         message.channel.sendMessage(result);
     } else if (commandFlag === '!commands') {
-        let result = "**!play1**:  randomize with single champ pool.\n"
-        + "**!play2**  :randomize with individual champ pools.\n\n"
-        + "To do a set command for players, add p to command. For champs, add c. For a specific player, player's name\n"
-        + "**!add**:  add something to a pool\n"
-        + "**!remove**,  remove something from a pool\n"
-        + "**!clear**,  clear a pool completely\n"
-        + "**!restore**,  restore a pool to how it was before it was cleared\n"
-        + "**!show**,  show what's in a pool";
-        message.channel.sendMessage(result);
+       
+        message.channel.send({embed: {
+            color: 3447003,
+            title: "Player Champ Randomizer Commands",
+            description: "Randomly assign people to things! Add c to perform action on champs pool, p for players pool and player's name for player's champ pool",
+            fields: [{
+                name: "!add",
+                value: "Add to a pool."
+              },
+              {
+                name: "!remove",
+                value: "Remove from a pool."
+              },
+              {
+                name: "!clear",
+                value: "Remove everything from a pool and save a backup of how it was before you cleared it."
+              },
+              {
+                name: "!restore",
+                value: "Restore a pool to its backup"
+              },
+              {
+                name: "!show",
+                value: "Show a pool."
+              },
+              {
+                name: "!play1",
+                value: "Randomly assign each player in players pool to a champ in champs pool"
+              },
+              {
+                name: "!play2",
+                value: "Randomly assign each player in players pool to a champ in the respective player's champ pool"
+              },
+            ],
+          }
+        });
+
     }
 
     if (words.length - 1 === sfi && (setFlags.includes(setFlag) || players.has(setFlag))) {
