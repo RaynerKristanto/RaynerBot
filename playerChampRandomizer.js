@@ -8,52 +8,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const embed = {
-  "title": "title ~~(did you know you can have markdown here too?)~~",
-  "description": "this supports [named links](https://discordapp.com) on top of the previously shown subset of markdown. ```\nyes, even code blocks```",
-  "url": "https://discordapp.com",
-  "color": 11443946,
-  "timestamp": "2018-09-16T22:44:15.732Z",
-  "footer": {
-    "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
-    "text": "footer text"
-  },
-  "thumbnail": {
-    "url": "https://cdn.discordapp.com/embed/avatars/0.png"
-  },
-  "image": {
-    "url": "https://cdn.discordapp.com/embed/avatars/0.png"
-  },
-  "author": {
-    "name": "author name",
-    "url": "https://discordapp.com",
-    "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
-  },
-  "fields": [
-    {
-      "name": "🤔",
-      "value": "some of these properties have certain limits..."
-    },
-    {
-      "name": "😱",
-      "value": "try exceeding some of them!"
-    },
-    {
-      "name": "🙄",
-      "value": "an informative error should show up, and this view will remain as-is until all issues are fixed"
-    },
-    {
-      "name": "<:thonkang:219069250692841473>",
-      "value": "these last two",
-      "inline": true
-    },
-    {
-      "name": "<:thonkang:219069250692841473>",
-      "value": "are inline fields",
-      "inline": true
-    }
-  ]
-};
 
 var champs = new Set();
 var players = new Set();
@@ -268,7 +222,6 @@ exports.handleMessage = function handleMessage(message, words) {
             ],
           }
         });
-
     }
 
     if (words.length - 1 === sfi && (setFlags.includes(setFlag) || players.has(setFlag))) {
@@ -279,8 +232,7 @@ exports.handleMessage = function handleMessage(message, words) {
 
             let s = decideSet(setFlag);
             let sc = decideCopySet(setFlag);
-            console.log(s);
-            console.log(sc);
+
             if (s && sc) {
                 copySet(s, sc);
                 s.clear();
@@ -364,6 +316,4 @@ exports.handleMessage = function handleMessage(message, words) {
         }
     }
     saveCollectionsToFile();
-    console.log(playersChampMap);
-    console.log(playersChampMapBackup);
 }
